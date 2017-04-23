@@ -12,17 +12,11 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 
-const LEGG_TIL_VARE = 'LEGG_TIL_VARE';
+import LeggTilButton from './leggtilbutton';
 
-const leggTilVare = (tekst) => {
-  return {
-    type: LEGG_TIL_VARE,
-    tekst
-  }
-};
+import { LEGG_TIL_VARE, leggTilVare } from './actions/varer';
 
 export const varer = (state = [], action) => {
-  console.log("varer", state, action);
   switch (action.type) {
     case LEGG_TIL_VARE:
       return [
@@ -37,7 +31,7 @@ export const varer = (state = [], action) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
+  console.log("Handleliste mapStateToProps", state);
   return {
     tekst: state.payload
   }
@@ -54,25 +48,10 @@ const mapDispatchToProps = (dispatch) => {
 const LIGHT_BLUE = '#dff1f9';
 
 class Handleliste extends Component {
-  constructor(props) {
-    super(props);
-    this.props.tekst = "";
-  }
-
   render() {
     return (
       <View style={{flex: 1, padding: 10}}>
-        <TextInput
-          style={{padding: 20, paddingTop: 50}}
-          placeholder="Legg til vare"
-          onChangeText={this.props.tekstEndret}
-        />
-        <Button
-          onPress={this.props.tekstEndret}
-          title="Legg til"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        <LeggTilButton />
         <Text style={{backgroundColor: LIGHT_BLUE}}>
           {this.props.tekst}
         </Text>

@@ -17,13 +17,12 @@ import {
 
 import store from './src/store';
 import Handleliste from './src/handleliste';
-import LeggTilButton from './src/leggtilbutton';
 
 export default class mobil extends Component {
   render() {
     return (
       <Provider store={store}>
-        <LeggTilButton />
+        <Handleliste/>
       </Provider>
     );
   }
