@@ -9,6 +9,7 @@ import {
   View,
   Text,
   ListView,
+  Header,
 } from 'react-native';
 import { connect } from 'react-redux'
 
@@ -22,7 +23,7 @@ export const varer = (state = [], action) => {
       return [
         ...state,
         {
-          tekst: action.tekst
+          tekst: action.payload
         }
       ];
     default:
@@ -31,9 +32,8 @@ export const varer = (state = [], action) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("Handleliste mapStateToProps", state);
   return {
-    tekst: state.payload
+    varer: state.varer
   }
 };
 
@@ -48,13 +48,31 @@ const mapDispatchToProps = (dispatch) => {
 const LIGHT_BLUE = '#dff1f9';
 
 class Handleliste extends Component {
+  constructor(props) {
+    super(props);
+
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows([]),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
+    this.setState({ dataSource: ds.cloneWithRows(nextProps.varer) });
+  }
+
   render() {
     return (
       <View style={{flex: 1, padding: 10}}>
         <LeggTilButton />
-        <Text style={{backgroundColor: LIGHT_BLUE}}>
-          {this.props.tekst}
-        </Text>
+        <ListView
+          enableEmptySections
+          style={{backgroundColor: LIGHT_BLUE}}
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text>{rowData.tekst}</Text>}/>
       </View>
     )
   }
