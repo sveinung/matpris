@@ -13,37 +13,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 
+import { leggTilVare } from '../actions/varer';
 import LeggTilButton from './leggtilbutton';
-
-import { LEGG_TIL_VARE, leggTilVare } from './actions/varer';
-
-export const varer = (state = [], action) => {
-  switch (action.type) {
-    case LEGG_TIL_VARE:
-      return [
-        ...state,
-        {
-          tekst: action.payload
-        }
-      ];
-    default:
-      return state;
-  }
-};
-
-const mapStateToProps = (state) => {
-  return {
-    varer: state.varer
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    tekstEndret: (tekst) => {
-      dispatch(leggTilVare(tekst));
-    }
-  }
-};
 
 const LIGHT_BLUE = '#dff1f9';
 
@@ -77,4 +48,19 @@ class Handleliste extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    varer: state.varer
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    tekstEndret: (tekst) => {
+      dispatch(leggTilVare(tekst));
+    }
+  }
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Handleliste);

@@ -11,17 +11,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { ENDRE_TEKST, endreTekst } from './actions/tekst';
-import { leggTilVare } from './actions/varer';
-
-export const tekst = (state = "", action) => {
-  switch (action.type) {
-    case ENDRE_TEKST:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+import { endreTekst } from '../actions/tekst';
+import { leggTilVare } from '../actions/varer';
 
 class LeggTilButton extends Component {
   render() {

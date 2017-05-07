@@ -59,6 +59,10 @@ class LoggInn extends Component {
           onPress={() => Actions.registrerBrukar()}
           title="Registrer"
         />
+        <Button
+          onPress={() => Actions.handleliste()}
+          title="Handleliste"
+        />
       </View>
     )
   }

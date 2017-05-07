@@ -10,9 +10,9 @@ import {
   Actions,
 } from 'react-native-router-flux';
 
-import Handleliste from './handleliste';
+import Handleliste from './components/handleliste';
 import Logginn from './components/logginn';
-import RegistrerBrukar from './components/registrer-brukar';
+import RegistrerBrukar from './components/registrerBrukar';
 
 const RouterComponent = () => (
   <View style={{ flex: 1 }}>

@@ -3,8 +3,8 @@ import {
   combineReducers,
 } from 'redux';
 
-import { varer } from './handleliste';
-import { tekst } from './leggtilbutton';
+import varer from './reducers/varer';
+import tekst from './reducers/tekst';
 import registrertBrukar from './reducers/registrertBrukar';
 
 export default createStore(combineReducers({
