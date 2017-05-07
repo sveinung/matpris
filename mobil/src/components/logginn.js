@@ -11,6 +11,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +56,7 @@ class LoggInn extends Component {
           title="Logg inn"
         />
         <Button
-          onPress={() => {}}
+          onPress={() => Actions.registrerBrukar()}
           title="Registrer"
         />
       </View>

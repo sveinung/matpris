@@ -9,7 +9,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import { ENDRE_TEKST, endreTekst } from './actions/tekst';
 import { leggTilVare } from './actions/varer';

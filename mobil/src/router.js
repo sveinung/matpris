@@ -7,11 +7,12 @@ import {
 import {
   Router,
   Scene,
-  Actions
+  Actions,
 } from 'react-native-router-flux';
 
 import Handleliste from './handleliste';
 import Logginn from './components/logginn';
+import RegistrerBrukar from './components/registrer-brukar';
 
 const RouterComponent = () => (
   <View style={{ flex: 1 }}>
@@ -30,6 +31,11 @@ const RouterComponent = () => (
           key="handleliste"
           component={Handleliste}
           title="Register"
+        />
+        <Scene
+          key="registrerBrukar"
+          component={RegistrerBrukar}
+          title="Register brukar"
         />
       </Scene>
     </Router>
