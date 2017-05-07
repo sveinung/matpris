@@ -19,7 +19,6 @@ const RouterComponent = () => (
     <Router>
       <Scene
         key="root"
-        hideNavBar
       >
         <Scene
           key="logginn"
@@ -30,7 +29,7 @@ const RouterComponent = () => (
         <Scene
           key="handleliste"
           component={Handleliste}
-          title="Register"
+          title="Legg til vare"
         />
         <Scene
           key="registrerBrukar"

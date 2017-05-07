@@ -4,12 +4,10 @@ import React, {
   Component,
 } from 'react';
 import {
-  Button,
-  TextInput,
   View,
   Text,
   ListView,
-  Header,
+  StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
 
@@ -37,7 +35,7 @@ class Handleliste extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, padding: 10}}>
+      <View style={styles.container}>
         <LeggTilButton />
         <ListView
           enableEmptySections
@@ -48,6 +46,15 @@ class Handleliste extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    marginTop: 60,
+  },
+});
+
 
 const mapStateToProps = (state) => {
   return {
