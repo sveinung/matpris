@@ -1,7 +1,6 @@
 export const ENDRE_EPOST = 'ENDRE_EPOST';
 export const ENDRE_PASSORD = 'ENDRE_PASSORD';
-export const ENDRE_FORNAMN = 'ENDRE_FORNAMN';
-export const ENDRE_ETTERNAMN = 'ENDRE_ETTERNAMN';
+export const REGISTRERINGSFEIL = 'REGISTRERINGSFEIL';
 
 export const endreEpost = (epost) => {
   return {
@@ -17,16 +16,9 @@ export const endrePassord = (passord) => {
   }
 };
 
-export const endreFornamn = (fornamn) => {
+export const registreringsfeil = () => {
   return {
-    type: ENDRE_FORNAMN,
-    payload: fornamn,
-  }
-};
-
-export const endreEtternamn = (etternamn) => {
-  return {
-    type: ENDRE_ETTERNAMN,
-    payload: etternamn,
+    type: REGISTRERINGSFEIL,
+    payload: true,
   }
 };

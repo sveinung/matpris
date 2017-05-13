@@ -8,19 +8,15 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux';
-//import FireAuth from 'react-native-firebase-auth';
 
 import {
-  ENDRE_EPOST,
-  ENDRE_PASSORD,
-  ENDRE_FORNAMN,
-  ENDRE_ETTERNAMN,
   endreEpost,
   endrePassord,
-  endreFornamn,
-  endreEtternamn,
+  registreringsfeil,
 } from '../actions/brukar';
+import { registrerBrukar } from '../firebase-adapter';
 
+const TOMATRAUD = '#ff6347';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,13 +28,19 @@ const styles = StyleSheet.create({
   textInput: {
     width: 200,
     height: 30,
-  }
+  },
+  feilmelding: {
+    color: TOMATRAUD,
+  },
 });
 
 class RegisterBrukar extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.props.registreringsfeil &&
+          <Text style={styles.feilmelding}>Feil oppstod ved registrering</Text>
+        }
         <View>
           <Text>
             Epost
@@ -59,46 +61,21 @@ class RegisterBrukar extends Component {
             onChangeText={this.props.onEndrePassord}
           />
         </View>
-        <View>
-          <Text>
-            Fornavn
-          </Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Fornavn"
-            onChangeText={this.props.onEndreFornamn}
-          />
-        </View>
-        <View>
-          <Text>
-            Etternavn
-          </Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Etternavn"
-            onChangeText={this.props.onEndreEtternamn}
-          />
-        </View>
         <Button
-          onPress={() => this.register(this.props)}
+          onPress={() => this.props.onEnter(this.props)}
           title="Registrer"
         />
       </View>
     );
   }
-
-  register({ epost, passord, fornamn, etternamn }) {
-    //FireAuth.register(email, password, { firstName, lastName });
-  }
 }
 
 const mapStateToProps = (state) => {
-  const { epost, passord, fornamn, etternamn } = state.registrertBrukar;
+  const { epost, passord, registreringsfeil } = state.registrertBrukar;
   return {
     epost,
     passord,
-    fornamn,
-    etternamn,
+    registreringsfeil,
   };
 };
 
@@ -110,12 +87,18 @@ const mapDispatchToProps = (dispatch) => {
     onEndrePassord: (passord) => {
       dispatch(endrePassord(passord));
     },
-    onEndreFornamn: (fornamn) => {
-      dispatch(endreFornamn(fornamn));
-    },
-    onEndreEtternamn: (etternamn) => {
-      dispatch(endreEtternamn(etternamn));
-    },
+    onEnter: ({epost, passord}) => {
+      try {
+        registrerBrukar(epost, passord)
+          .then(() => {
+          })
+          .catch(error => {
+            dispatch(registreringsfeil());
+          });
+      } catch (error) {
+        dispatch(registreringsfeil());
+      }
+    }
   };
 };
 

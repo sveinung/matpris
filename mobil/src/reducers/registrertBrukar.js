@@ -1,8 +1,7 @@
 import {
   ENDRE_EPOST,
   ENDRE_PASSORD,
-  ENDRE_FORNAMN,
-  ENDRE_ETTERNAMN,
+  REGISTRERINGSFEIL,
 } from '../actions/brukar';
 
 export default registrertBrukar = (state = {}, action) => {
@@ -17,15 +16,10 @@ export default registrertBrukar = (state = {}, action) => {
         ...state,
         passord: action.payload,
       };
-    case ENDRE_FORNAMN:
+    case REGISTRERINGSFEIL:
       return {
         ...state,
-        fornamn: action.payload,
-      };
-    case ENDRE_ETTERNAMN:
-      return {
-        ...state,
-        etternamn: action.payload,
+        registreringsfeil: action.payload,
       };
     default:
       return state;
