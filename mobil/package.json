@@ -5,12 +5,14 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "dev": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "cd ios; pod install"
   },
   "dependencies": {
     "firebase": "^3.9.0",
     "react": "~15.4.0",
     "react-native": "0.41.2",
+    "react-native-firebase-crash-report": "^1.2.0",
     "react-native-router-flux": "^3.38.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0"

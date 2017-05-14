@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux';
+import FirebaseCrash from 'react-native-firebase-crash-report';
 
 import {
   endreEpost,
@@ -96,6 +97,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(registreringsfeil());
           });
       } catch (error) {
+        FirebaseCrash.log('Innlogging feila');
+        FirebaseCrash.report('Innlogging feila');
         dispatch(registreringsfeil());
       }
     }
