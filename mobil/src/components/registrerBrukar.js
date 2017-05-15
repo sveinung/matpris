@@ -49,6 +49,8 @@ class RegisterBrukar extends Component {
           <TextInput
             style={styles.textInput}
             placeholder="Epostadresse"
+            autoCapitalize="none"
+            autoCorrect={false}
             onChangeText={this.props.onEndreEpost}
           />
         </View>
@@ -59,6 +61,8 @@ class RegisterBrukar extends Component {
           <TextInput
             style={styles.textInput}
             placeholder="Passord"
+            autoCapitalize="none"
+            autoCorrect={false}
             onChangeText={this.props.onEndrePassord}
           />
         </View>

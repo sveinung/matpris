@@ -38,6 +38,8 @@ class LoggInn extends Component {
           <TextInput
             style={styles.textInput}
             placeholder="Brukernavn"
+            autoCapitalize="none"
+            autoCorrect={false}
             onChangeText={() => {}}
           />
         </View>
@@ -48,6 +50,8 @@ class LoggInn extends Component {
           <TextInput
             style={styles.textInput}
             placeholder="Passord"
+            autoCapitalize="none"
+            autoCorrect={false}
             onChangeText={() => {}}
           />
         </View>
