@@ -8,14 +8,14 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux';
-import FirebaseCrash from 'react-native-firebase-crash-report';
 
 import {
   endreEpost,
   endrePassord,
   registreringsfeil,
 } from '../actions/brukar';
-import { registrerBrukar } from '../firebase-adapter';
+import { innloggaSom } from '../actions/innlogging';
+import { registrerBrukar, onInnlogga } from '../firebase-adapter';
 
 const TOMATRAUD = '#ff6347';
 
@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
 });
 
 class RegisterBrukar extends Component {
+  constructor(props) {
+    super(props);
+
+    onInnlogga(this.props.onInnlogga);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -89,9 +95,11 @@ const mapDispatchToProps = (dispatch) => {
     onEndreEpost: (epost) => {
       dispatch(endreEpost(epost));
     },
+
     onEndrePassord: (passord) => {
       dispatch(endrePassord(passord));
     },
+
     onEnter: ({epost, passord}) => {
       try {
         registrerBrukar(epost, passord)
@@ -101,11 +109,14 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(registreringsfeil());
           });
       } catch (error) {
-        FirebaseCrash.log('Innlogging feila');
-        FirebaseCrash.report('Innlogging feila');
         dispatch(registreringsfeil());
       }
-    }
+    },
+
+    onInnlogga: ({ email }) => {
+      dispatch(innloggaSom(email));
+      Actions.handleliste();
+    },
   };
 };
 

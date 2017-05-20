@@ -36,6 +36,9 @@ class Handleliste extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {
+          this.props.innlogga && <Text style={styles.brukarInfo}>{this.props.epost}</Text>
+        }
         <LeggTilButton />
         <ListView
           enableEmptySections
@@ -53,12 +56,20 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 60,
   },
+  brukarInfo: {
+    padding: 10,
+    marginTop: 60,
+  },
 });
 
 
 const mapStateToProps = (state) => {
+  const { epost, innlogga } = state.innlogging;
+
   return {
-    varer: state.varer
+    varer: state.varer,
+    epost,
+    innlogga,
   }
 };
 

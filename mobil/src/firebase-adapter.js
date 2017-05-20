@@ -13,3 +13,14 @@ export const registrerBrukar = (epost, passord) => {
   return firebase.auth()
     .createUserWithEmailAndPassword(epost, passord);
 };
+
+export const onInnlogga = (innlogga) => {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log("logga inn", user);
+      innlogga(user);
+    } else {
+      console.log("ikkje logga inn");
+    }
+  });
+};
