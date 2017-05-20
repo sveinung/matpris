@@ -10,6 +10,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { Gravatar } from 'react-native-gravatar';
 
 import { loggUt } from '../actions/innlogging';
 import { loggUtBrukar } from '../firebase-adapter';
@@ -19,13 +20,25 @@ class Brukarsesjon extends Component {
     return (
       <View>
         <Text style={styles.brukarInfo}>{this.props.epost}</Text>
+        <Gravatar
+          options={this.gravatarOptions()}
+          style={styles.roundedProfileImage}
+        />
         <Button
           onPress={this.props.onLoggut}
-          title="Loggut"
+          title="Logg ut"
           color="#841584"
         />
       </View>
     );
+  }
+
+  gravatarOptions() {
+    return {
+      email: this.props.epost,
+      parameters: {"size": "200", "d": "mm"},
+      secure: true,
+    };
   }
 
   render() {
@@ -44,6 +57,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 60,
   },
+  roundedProfileImage: {
+    width: 50,
+    height: 50,
+    borderWidth: 3,
+    borderColor: 'white',
+    borderRadius: 25
+  }
 });
 
 const mapStateToProps = (state) => {
