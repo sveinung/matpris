@@ -25,8 +25,10 @@ function mapToFeilmelding(errorCode) {
   switch (errorCode) {
     case 'auth/argument-error':
       return 'Ugyldig epostadresse';
-      case 'auth/weak-password':
+    case 'auth/weak-password':
       return 'For svakt passord';
+    case 'auth/email-already-in-use':
+      return 'Ein brukarkonto med den eposten finst allereie';
     default:
       console.log("feilkode", errorCode);
       return 'Noko gjekk gale';
