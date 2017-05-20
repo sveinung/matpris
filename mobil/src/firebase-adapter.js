@@ -25,7 +25,10 @@ function mapToFeilmelding(errorCode) {
   switch (errorCode) {
     case 'auth/argument-error':
       return 'Ugyldig epostadresse';
+      case 'auth/weak-password':
+      return 'For svakt passord';
     default:
+      console.log("feilkode", errorCode);
       return 'Noko gjekk gale';
   }
 }
