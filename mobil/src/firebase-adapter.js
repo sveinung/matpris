@@ -34,7 +34,7 @@ function mapToFeilmelding(errorCode) {
 }
 
 export const onInnlogga = (innlogga) => {
-  firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log("logga inn", user);
       innlogga(user);
@@ -42,4 +42,11 @@ export const onInnlogga = (innlogga) => {
       console.log("ikkje logga inn");
     }
   });
+};
+
+export const loggUtBrukar = () => {
+  return firebase.auth().signOut()
+    .catch((error) => {
+      console.log("utlogging feila", error);
+    });
 };

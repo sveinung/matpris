@@ -1,4 +1,5 @@
 export const INNLOGGA_SOM = 'INNLOGGA_SOM';
+export const LOGG_UT = 'LOGG_UT';
 
 export const innloggaSom = (epost) => {
   return {
@@ -7,5 +8,12 @@ export const innloggaSom = (epost) => {
       epost,
       innlogga: true,
     },
+  }
+};
+
+export const loggUt = () => {
+  return {
+    type: LOGG_UT,
+    payload: true,
   }
 };

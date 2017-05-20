@@ -4,6 +4,7 @@ import React, {
   Component,
 } from 'react';
 import {
+  Button,
   View,
   Text,
   ListView,
@@ -12,7 +13,9 @@ import {
 import { connect } from 'react-redux'
 
 import { leggTilVare } from '../actions/varer';
+import { loggUt } from '../actions/innlogging';
 import LeggTilButton from './leggtilbutton';
+import { loggUtBrukar } from '../firebase-adapter';
 
 const LIGHT_BLUE = '#dff1f9';
 
@@ -33,11 +36,24 @@ class Handleliste extends Component {
     this.setState({ dataSource: ds.cloneWithRows(nextProps.varer) });
   }
 
+  renderBrukar() {
+    return (
+      <View>
+        <Text style={styles.brukarInfo}>{this.props.epost}</Text>
+        <Button
+          onPress={this.props.onLoggut}
+          title="Loggut"
+          color="#841584"
+        />
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
         {
-          this.props.innlogga && <Text style={styles.brukarInfo}>{this.props.epost}</Text>
+          this.props.innlogga && this.renderBrukar()
         }
         <LeggTilButton />
         <ListView
@@ -77,6 +93,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     tekstEndret: (tekst) => {
       dispatch(leggTilVare(tekst));
+    },
+
+    onLoggut: () => {
+      loggUtBrukar()
+        .then(() => dispatch(loggUt()));
     }
   }
 };
