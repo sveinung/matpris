@@ -46,7 +46,7 @@ class RegisterBrukar extends Component {
     return (
       <View style={styles.container}>
         {this.props.registreringsfeil &&
-          <Text style={styles.feilmelding}>Feil oppstod ved registrering</Text>
+          <Text style={styles.feilmelding}>{this.props.registreringsfeil}</Text>
         }
         <View>
           <Text>
@@ -101,16 +101,14 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     onEnter: ({epost, passord}) => {
-      try {
-        registrerBrukar(epost, passord)
-          .then(() => {
-          })
-          .catch(error => {
-            dispatch(registreringsfeil());
-          });
-      } catch (error) {
-        dispatch(registreringsfeil());
-      }
+      registrerBrukar(epost, passord)
+        .then((user) => {
+          console.log("onEnter user", user);
+        })
+        .catch((feilmelding) => {
+          console.log("onEnter error", feilmelding);
+          dispatch(registreringsfeil(feilmelding));
+        });
     },
 
     onInnlogga: ({ email }) => {

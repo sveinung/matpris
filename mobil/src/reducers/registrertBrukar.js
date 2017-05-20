@@ -4,7 +4,11 @@ import {
   REGISTRERINGSFEIL,
 } from '../actions/brukar';
 
-export default registrertBrukar = (state = {}, action) => {
+const INITIAL_STATE = {
+  registreringsfeil: null,
+};
+
+export default registrertBrukar = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ENDRE_EPOST:
       return {

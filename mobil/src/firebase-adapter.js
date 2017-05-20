@@ -10,9 +10,25 @@ firebase.initializeApp({
 });
 
 export const registrerBrukar = (epost, passord) => {
-  return firebase.auth()
-    .createUserWithEmailAndPassword(epost, passord);
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await firebase.auth()
+        .createUserWithEmailAndPassword(epost, passord);
+      resolve(user);
+    } catch (error) {
+      reject(mapToFeilmelding(error.code));
+    }
+  });
 };
+
+function mapToFeilmelding(errorCode) {
+  switch (errorCode) {
+    case 'auth/argument-error':
+      return 'Ugyldig epostadresse';
+    default:
+      return 'Noko gjekk gale';
+  }
+}
 
 export const onInnlogga = (innlogga) => {
   firebase.auth().onAuthStateChanged(function (user) {

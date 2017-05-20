@@ -16,9 +16,9 @@ export const endrePassord = (passord) => {
   }
 };
 
-export const registreringsfeil = () => {
+export const registreringsfeil = (feilmelding) => {
   return {
     type: REGISTRERINGSFEIL,
-    payload: true,
+    payload: feilmelding,
   }
 };
