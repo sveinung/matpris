@@ -14,7 +14,7 @@ import {
   endrePassord,
   registreringsfeil,
 } from '../actions/brukar';
-import { innloggaSom } from '../actions/innlogging';
+import { innloggaSom } from '../actions/innloggaBrukar';
 import { registrerBrukar, onInnlogga } from '../firebase-adapter';
 
 const TOMATRAUD = '#ff6347';

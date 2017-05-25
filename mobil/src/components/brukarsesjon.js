@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux'
 import { Gravatar } from 'react-native-gravatar';
 
-import { loggUt } from '../actions/innlogging';
+import { loggUt } from '../actions/innloggaBrukar';
 import { loggUtBrukar } from '../firebase-adapter';
 
 class Brukarsesjon extends Component {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  const { epost, innlogga } = state.innlogging;
+  const { epost, innlogga } = state.innloggaBrukar;
 
   return {
     epost,
