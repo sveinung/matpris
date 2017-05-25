@@ -21,6 +21,18 @@ export const registrerBrukar = (epost, passord) => {
   });
 };
 
+export const loggInnBrukar = (epost, passord) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await firebase.auth()
+        .signInWithEmailAndPassword(epost, passord);
+      resolve(user);
+    } catch (error) {
+      reject(mapToFeilmelding(error.code));
+    }
+  });
+};
+
 function mapToFeilmelding(errorCode) {
   switch (errorCode) {
     case 'auth/argument-error':
@@ -29,6 +41,8 @@ function mapToFeilmelding(errorCode) {
       return 'For svakt passord';
     case 'auth/email-already-in-use':
       return 'Ein brukarkonto med den eposten finst allereie';
+    case 'auth/invalid-email':
+      return 'Ugyldig epostadresse';
     default:
       console.log("feilkode", errorCode);
       return 'Noko gjekk gale';

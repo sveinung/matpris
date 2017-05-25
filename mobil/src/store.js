@@ -7,6 +7,7 @@ import varer from './reducers/varer';
 import tekst from './reducers/tekst';
 import registrertBrukar from './reducers/registrertBrukar';
 import innloggaBrukar from './reducers/innloggaBrukar';
+import innlogging from './reducers/innlogging';
 
 import { LOGG_UT } from './actions/innloggaBrukar';
 
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   tekst,
   registrertBrukar,
   innloggaBrukar,
+  innlogging,
 });
 
 const rootReducer = (state, action) => {

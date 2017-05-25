@@ -16,8 +16,7 @@ import {
 } from '../actions/brukar';
 import { innloggaSom } from '../actions/innloggaBrukar';
 import { registrerBrukar, onInnlogga } from '../firebase-adapter';
-
-const TOMATRAUD = '#ff6347';
+import { TOMATRAUD } from '../felles/fargar';
 
 const styles = StyleSheet.create({
   container: {
