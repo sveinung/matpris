@@ -79,10 +79,6 @@ class LoggInn extends Component {
           onPress={() => Actions.registrerBrukar()}
           title="Registrer"
         />
-        <Button
-          onPress={() => Actions.handleliste()}
-          title="Handleliste"
-        />
       </View>
     )
   }
@@ -111,7 +107,7 @@ const mapDispatchToProps = (dispatch) => {
       loggInnBrukar(epost, passord)
         .then(() => {
           dispatch(innloggaSom(epost));
-          Actions.handleliste();
+          Actions.innlogga();
         })
         .catch((feilmelding) => {
           console.log("innloggingsfeil", feilmelding);

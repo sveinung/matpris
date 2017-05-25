@@ -28,23 +28,22 @@ const RouterComponent = () => (
           component={Logginn}
           title="Logg inn"
           initial={true}
-          onRight={() => {}}
-          renderRightButton={renderRightButton}
-        />
-        <Scene
-          key="handleliste"
-          component={Handleliste}
-          title="Legg til vare"
-          onRight={() => {}}
-          renderRightButton={renderRightButton}
         />
         <Scene
           key="registrerBrukar"
           component={RegistrerBrukar}
           title="Register brukar"
-          onRight={() => {}}
-          renderRightButton={renderRightButton}
         />
+        <Scene key="innlogga">
+          <Scene
+            key="handleliste"
+            initial={true}
+            component={Handleliste}
+            title="Legg til vare"
+            onRight={() => {}}
+            renderRightButton={renderRightButton}
+          />
+        </Scene>
       </Scene>
     </Router>
   </View>
