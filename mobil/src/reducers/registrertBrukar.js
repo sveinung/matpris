@@ -2,7 +2,7 @@ import {
   ENDRE_EPOST,
   ENDRE_PASSORD,
   REGISTRERINGSFEIL,
-} from '../actions/brukar';
+} from '../actions/registrertBrukar';
 
 const INITIAL_STATE = {
   registreringsfeil: null,

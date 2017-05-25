@@ -13,7 +13,7 @@ import {
   endreEpost,
   endrePassord,
   registreringsfeil,
-} from '../actions/brukar';
+} from '../actions/registrertBrukar';
 import { innloggaSom } from '../actions/innloggaBrukar';
 import { registrerBrukar, onInnlogga } from '../firebase-adapter';
 import { TOMATRAUD } from '../felles/fargar';
