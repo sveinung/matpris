@@ -10,6 +10,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux';
 import { Gravatar } from 'react-native-gravatar';
 
 import { loggUt } from '../actions/innloggaBrukar';
@@ -79,7 +80,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoggut: () => {
       loggUtBrukar()
-        .then(() => dispatch(loggUt()));
+        .then(() => {
+          dispatch(loggUt());
+          Actions.logginn();
+        });
     }
   }
 };
