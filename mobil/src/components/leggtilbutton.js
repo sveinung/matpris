@@ -21,10 +21,10 @@ class LeggTilButton extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Vare"
-          onChangeText={this.props.onChangeTekst}
+          onChangeText={this.props.endreTekst}
         />
         <Button
-          onPress={() => this.props.onEnter(this.props.tekst)}
+          onPress={() => this.props.leggTilVare(this.props.tekst)}
           title="Legg til vare"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
@@ -40,15 +40,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onChangeTekst: (tekst) => {
-      dispatch(endreTekst(tekst));
-    },
-    onEnter: (tekst) => {
-      dispatch(leggTilVare(tekst));
-    }
-  };
+const mapDispatchToProps = {
+  endreTekst,
+  leggTilVare,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeggTilButton);
