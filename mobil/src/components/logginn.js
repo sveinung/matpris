@@ -106,15 +106,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(endrePassord(passord));
     },
 
-    onEnter: ({ epost, passord }) => {
-      loggInnBrukar(epost, passord)
-        .then(() => {
-          dispatch(innloggaSom(epost));
-          Actions.innlogga();
-        })
-        .catch((feilmelding) => {
-          dispatch(innloggingsfeil(feilmelding));
-        });
+    onEnter: async ({ epost, passord }) => {
+      try {
+        await loggInnBrukar(epost, passord);
+        dispatch(innloggaSom(epost));
+        Actions.innlogga();
+      } catch (feilmelding) {
+        dispatch(innloggingsfeil(feilmelding));
+      }
     },
 
     endraAutentiseringsstatus: async () => {
