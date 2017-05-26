@@ -1,1 +1,1 @@
-export const TOMATRAUD = '#ff6347';
+export const TOMATRAUD = 'tomato';

@@ -17,6 +17,7 @@ import {
 import { innloggaSom } from '../actions/innloggaBrukar';
 import { registrerBrukar, onInnlogga } from '../firebase-adapter';
 import { TOMATRAUD } from '../felles/fargar';
+import textInputStyles from './styles/textInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,10 +25,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  textInput: {
-    width: 200,
-    height: 30,
   },
   feilmelding: {
     color: TOMATRAUD,
@@ -52,7 +49,7 @@ class RegisterBrukar extends Component {
             Epost
           </Text>
           <TextInput
-            style={styles.textInput}
+            style={textInputStyles}
             placeholder="Epostadresse"
             autoCapitalize="none"
             autoCorrect={false}
@@ -64,7 +61,7 @@ class RegisterBrukar extends Component {
             Passord
           </Text>
           <TextInput
-            style={styles.textInput}
+            style={textInputStyles}
             placeholder="Passord"
             autoCapitalize="none"
             autoCorrect={false}

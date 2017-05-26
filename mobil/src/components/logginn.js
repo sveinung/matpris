@@ -21,6 +21,7 @@ import {
 import { innloggaSom } from '../actions/innloggaBrukar';
 import { loggInnBrukar } from '../firebase-adapter';
 import { TOMATRAUD } from '../felles/fargar';
+import textInputStyles from './styles/textInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,10 +29,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  textInput: {
-    width: 100,
-    height: 30,
   },
   feilmelding: {
     color: TOMATRAUD,
@@ -51,7 +48,7 @@ class LoggInn extends Component {
             Brukernavn
           </Text>
           <TextInput
-            style={styles.textInput}
+            style={textInputStyles}
             placeholder="Brukernavn"
             autoCapitalize="none"
             autoCorrect={false}
@@ -63,7 +60,7 @@ class LoggInn extends Component {
             Passord
           </Text>
           <TextInput
-            style={styles.textInput}
+            style={textInputStyles}
             placeholder="Passord"
             autoCapitalize="none"
             autoCorrect={false}

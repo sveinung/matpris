@@ -13,13 +13,14 @@ import { connect } from 'react-redux';
 
 import { endreTekst } from '../actions/tekst';
 import { leggTilVare } from '../actions/varer';
+import textInputStyles from './styles/textInput';
 
 class LeggTilButton extends Component {
   render() {
     return (
       <View>
         <TextInput
-          style={{height: 40}}
+          style={textInputStyles}
           placeholder="Vare"
           onChangeText={this.props.endreTekst}
         />
