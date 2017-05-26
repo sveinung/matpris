@@ -15,7 +15,7 @@ import {
   registreringsfeil,
 } from '../actions/registrertBrukar';
 import { innloggaSom } from '../actions/innloggaBrukar';
-import { registrerBrukar, onInnlogga } from '../firebase-adapter';
+import { registrerBrukar } from '../firebase-adapter';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
 
@@ -32,12 +32,6 @@ const styles = StyleSheet.create({
 });
 
 class RegisterBrukar extends Component {
-  constructor(props) {
-    super(props);
-
-    onInnlogga(this.props.onInnlogga);
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -96,20 +90,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(endrePassord(passord));
     },
 
-    onEnter: ({epost, passord}) => {
-      registrerBrukar(epost, passord)
-        .then((user) => {
-          console.log("onEnter user", user);
-        })
-        .catch((feilmelding) => {
-          console.log("onEnter error", feilmelding);
-          dispatch(registreringsfeil(feilmelding));
-        });
-    },
-
-    onInnlogga: ({ email }) => {
-      dispatch(innloggaSom(email));
-      Actions.handleliste();
+    onEnter: async ({epost, passord}) => {
+      try {
+        const user = await registrerBrukar(epost, passord);
+        dispatch(innloggaSom(user.email));
+        Actions.innlogga();
+      } catch (error) {
+        dispatch(registreringsfeil(feilmelding));
+      }
     },
   };
 };

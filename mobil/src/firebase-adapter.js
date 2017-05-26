@@ -49,17 +49,6 @@ function mapToFeilmelding(errorCode) {
   }
 }
 
-export const onInnlogga = (innlogga) => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log("logga inn", user);
-      innlogga(user);
-    } else {
-      console.log("ikkje logga inn");
-    }
-  });
-};
-
 export const loggUtBrukar = () => {
   return firebase.auth().signOut()
     .catch((error) => {
