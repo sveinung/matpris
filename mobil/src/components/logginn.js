@@ -22,6 +22,7 @@ import { innloggaSom } from '../actions/innloggaBrukar';
 import { loggInnBrukar } from '../firebase-adapter';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
+import { vedEndraAutentiseringsstatus } from '../firebase-adapter';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,6 +38,11 @@ const styles = StyleSheet.create({
 
 
 class LoggInn extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.endraAutentiseringsstatus();
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -107,10 +113,18 @@ const mapDispatchToProps = (dispatch) => {
           Actions.innlogga();
         })
         .catch((feilmelding) => {
-          console.log("innloggingsfeil", feilmelding);
           dispatch(innloggingsfeil(feilmelding));
         });
     },
+
+    endraAutentiseringsstatus: async () => {
+      try {
+        const user = await vedEndraAutentiseringsstatus();
+        dispatch(innloggaSom(user.email));
+        Actions.innlogga();
+      } catch (_) {
+      }
+    }
   };
 };
 

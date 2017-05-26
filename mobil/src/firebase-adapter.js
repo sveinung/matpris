@@ -49,6 +49,18 @@ function mapToFeilmelding(errorCode) {
   }
 }
 
+export const vedEndraAutentiseringsstatus = () => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        resolve(user);
+      } else {
+        reject('ikkje innlogga');
+      }
+    });
+  });
+};
+
 export const loggUtBrukar = () => {
   return firebase.auth().signOut()
     .catch((error) => {
