@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Handleliste from './components/handleliste';
 import Logginn from './components/logginn';
 import RegistrerBrukar from './components/registrerBrukar';
+import Brukarsesjon from './components/brukarsesjon';
 
 const DODGER_BLUE = '#1e90ff';
 
@@ -40,8 +41,13 @@ const RouterComponent = () => (
             initial={true}
             component={Handleliste}
             title="Legg til vare"
-            onRight={() => {}}
-            renderRightButton={renderRightButton}
+            onRight={() => Actions.brukarsesjon()}
+            rightTitle={renderRightButton()}
+          />
+          <Scene
+            key="brukarsesjon"
+            component={Brukarsesjon}
+            title="Brukar"
           />
         </Scene>
       </Scene>
@@ -49,6 +55,7 @@ const RouterComponent = () => (
   </View>
 );
 
-const renderRightButton = () => <Icon name="gear" size={30} color={DODGER_BLUE} />;
+const renderRightButton = () =>
+    <Icon name="gear" size={30} color={DODGER_BLUE} />;
 
 export default RouterComponent;

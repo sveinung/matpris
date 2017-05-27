@@ -13,7 +13,6 @@ import { connect } from 'react-redux'
 
 import { leggTilVare } from '../actions/varer';
 import LeggTilButton from './leggtilbutton';
-import Brukarsesjon from './brukarsesjon';
 
 const LIGHT_BLUE = '#dff1f9';
 
@@ -37,7 +36,6 @@ class Handleliste extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Brukarsesjon />
         <LeggTilButton />
         <ListView
           enableEmptySections
