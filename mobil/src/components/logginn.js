@@ -19,10 +19,12 @@ import {
   innloggingsfeil,
 } from '../actions/innlogging';
 import { innloggaSom } from '../actions/innloggaBrukar';
-import { loggInnBrukar } from '../firebase-adapter';
+import {
+  loggInnBrukar,
+  vedEndraAutentiseringsstatus,
+} from '../adapters/autentisering';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
-import { vedEndraAutentiseringsstatus } from '../firebase-adapter';
 
 const styles = StyleSheet.create({
   container: {

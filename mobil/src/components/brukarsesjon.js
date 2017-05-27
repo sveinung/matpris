@@ -14,7 +14,7 @@ import { Actions } from 'react-native-router-flux';
 import { Gravatar } from 'react-native-gravatar';
 
 import { loggUt } from '../actions/innloggaBrukar';
-import { loggUtBrukar } from '../firebase-adapter';
+import { loggUtBrukar } from '../adapters/autentisering';
 
 class Brukarsesjon extends Component {
   renderBrukar() {

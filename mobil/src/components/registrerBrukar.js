@@ -15,7 +15,7 @@ import {
   registreringsfeil,
 } from '../actions/registrertBrukar';
 import { innloggaSom } from '../actions/innloggaBrukar';
-import { registrerBrukar } from '../firebase-adapter';
+import { registrerBrukar } from '../adapters/autentisering';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
 
