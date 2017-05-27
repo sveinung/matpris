@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch) => {
         const user = await registrerBrukar(epost, passord);
         dispatch(innloggaSom(user.email));
         Actions.innlogga();
-      } catch (error) {
+      } catch (feilmelding) {
         dispatch(registreringsfeil(feilmelding));
       }
     },
