@@ -5,16 +5,10 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import {
-  Provider,
-} from 'react-redux';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
 
+import './src/adapters/firebase-init';
 import store from './src/store';
 import Router from './src/router';
 
