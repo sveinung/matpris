@@ -29,6 +29,7 @@ class LeggTilButton extends Component {
           title="Legg til vare"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
+          disabled={!this.props.tekst}
         />
       </View>
     )
