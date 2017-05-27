@@ -57,16 +57,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    varer: state.varer,
+    varer: state.varer.varer,
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    tekstEndret: (tekst) => {
-      dispatch(leggTilVare(tekst));
-    },
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Handleliste);
+export default connect(mapStateToProps)(Handleliste);

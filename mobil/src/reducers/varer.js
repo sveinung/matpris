@@ -1,14 +1,30 @@
-import { LEGG_TIL_VARE } from '../actions/varer';
+import {
+  ENDRE_TEKST,
+  LEGG_TIL_VARE,
+} from '../actions/varer';
 
-export default varer = (state = [], action) => {
+const INITIAL_STATE = {
+  tekst: '',
+  varer: [],
+};
+
+export default varer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LEGG_TIL_VARE:
-      return [
+    case ENDRE_TEKST:
+      return {
         ...state,
-        {
-          tekst: action.payload
-        }
-      ];
+        tekst: action.payload,
+      };
+    case LEGG_TIL_VARE:
+      return {
+        tekst: '',
+        varer: [
+          ...state.varer,
+          {
+            tekst: action.payload
+          }
+        ]
+      };
     default:
       return state;
   }

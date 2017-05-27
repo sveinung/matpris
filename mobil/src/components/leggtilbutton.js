@@ -11,8 +11,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { endreTekst } from '../actions/tekst';
-import { leggTilVare } from '../actions/varer';
+import { endreTekst, leggTilVare } from '../actions/varer';
 import textInputStyles from './styles/textInput';
 
 class LeggTilButton extends Component {
@@ -23,6 +22,7 @@ class LeggTilButton extends Component {
           style={textInputStyles}
           placeholder="Vare"
           onChangeText={this.props.endreTekst}
+          value={this.props.tekst}
         />
         <Button
           onPress={() => this.props.leggTilVare(this.props.tekst)}
@@ -37,7 +37,7 @@ class LeggTilButton extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    tekst: state.tekst
+    tekst: state.varer.tekst
   };
 };
 

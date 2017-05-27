@@ -4,7 +4,6 @@ import {
 } from 'redux';
 
 import varer from './reducers/varer';
-import tekst from './reducers/tekst';
 import registrertBrukar from './reducers/registrertBrukar';
 import innloggaBrukar from './reducers/innloggaBrukar';
 import innlogging from './reducers/innlogging';
@@ -13,7 +12,6 @@ import { LOGG_UT } from './actions/innloggaBrukar';
 
 const appReducer = combineReducers({
   varer,
-  tekst,
   registrertBrukar,
   innloggaBrukar,
   innlogging,
