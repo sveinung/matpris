@@ -1,14 +1,24 @@
+//  @flow
+
 import {
   ENDRE_EPOST,
   ENDRE_PASSORD,
   REGISTRERINGSFEIL,
 } from '../actions/registrertBrukar';
 
+type State = {
+  epost: string,
+  passord: string,
+  registreringsfeil: string,
+}
+
 const INITIAL_STATE = {
-  registreringsfeil: null,
+  epost: '',
+  passord: '',
+  registreringsfeil: '',
 };
 
-export default registrertBrukar = (state = INITIAL_STATE, action) => {
+export default function registrertBrukar(state: State = INITIAL_STATE, action: Action) {
   switch (action.type) {
     case ENDRE_EPOST:
       return {

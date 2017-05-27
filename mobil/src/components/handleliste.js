@@ -11,12 +11,21 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 
-import { leggTilVare } from '../actions/varer';
 import LeggTilButton from './leggtilbutton';
+import type { Vare } from '../reducers/varer';
 
 const LIGHT_BLUE = '#dff1f9';
 
+type Props = {
+  dataSource: Object,
+  varer: Array<Vare>,
+}
+
 class Handleliste extends Component {
+  state: {
+    dataSource: Object,
+  };
+
   constructor(props) {
     super(props);
 
@@ -26,7 +35,7 @@ class Handleliste extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });

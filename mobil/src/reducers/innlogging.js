@@ -1,10 +1,24 @@
+//  @flow
+
 import {
   INNLOGGINGS_EPOST,
   INNLOGGINGS_PASSORD,
   INNLOGGINGSFEIL,
 } from '../actions/innlogging';
 
-export default innlogging = (state = {}, action) => {
+type State = {
+  epost: string,
+  passord: string,
+  innloggingsfeil: string,
+}
+
+const INITIAL_STATE = {
+  epost: '',
+  passord: '',
+  innloggingsfeil: '',
+};
+
+export default function innlogging(state: State = INITIAL_STATE, action: Action) {
   switch (action.type) {
     case INNLOGGINGS_EPOST:
       return {

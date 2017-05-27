@@ -14,9 +14,18 @@ import { Actions } from 'react-native-router-flux';
 import { Gravatar } from 'react-native-gravatar';
 
 import { loggUt } from '../actions/innloggaBrukar';
+import type { State as InnloggaBrukarState } from '../reducers/innloggaBrukar';
 import { loggUtBrukar } from '../adapters/autentisering';
 
+type Props = {
+  epost: string,
+  innlogga: boolean,
+  onLoggut: () => void,
+}
+
 class Brukarsesjon extends Component {
+  props: Props;
+
   renderBrukar() {
     return (
       <View>
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  const { epost, innlogga } = state.innloggaBrukar;
+  const { epost, innlogga }: InnloggaBrukarState = state.innloggaBrukar;
 
   return {
     epost,

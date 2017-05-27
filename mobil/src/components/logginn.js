@@ -1,3 +1,5 @@
+//  @flow
+
 import React, {
   Component,
 } from 'react';
@@ -38,8 +40,17 @@ const styles = StyleSheet.create({
   },
 });
 
-
 class LoggInn extends Component {
+  props: {
+    epost: string,
+    passord: string,
+    innloggingsfeil: string,
+    onEndreEpost: (string) => void,
+    onEndrePassord: (string) => void,
+    onEnter: (Object) => void,
+    endraAutentiseringsstatus: () => void,
+  };
+
   constructor(props) {
     super(props);
 
@@ -49,7 +60,7 @@ class LoggInn extends Component {
     return (
       <View style={styles.container}>
         <View>
-          {this.props.innloggingsfeil &&
+          {this.props.innloggingsfeil !== '' &&
             <Text style={styles.feilmelding}>{this.props.innloggingsfeil}</Text>
           }
           <Text>

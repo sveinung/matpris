@@ -1,3 +1,5 @@
+//  @flow
+
 import React, { Component } from 'react';
 import {
   View,
@@ -32,6 +34,15 @@ const styles = StyleSheet.create({
 });
 
 class RegisterBrukar extends Component {
+  props: {
+    epost: string,
+    passord: string,
+    registreringsfeil: string,
+    onEndreEpost: (string) => void,
+    onEndrePassord: (string) => void,
+    onEnter: (Object) => void,
+  };
+
   render() {
     return (
       <View style={styles.container}>

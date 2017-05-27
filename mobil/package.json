@@ -7,7 +7,8 @@
     "dev": "react-native run-ios",
     "test": "jest",
     "prepublish": "cd ios; pod install",
-    "clean": "rm -rf ios/build/"
+    "clean": "rm -rf ios/build/",
+    "flow": "node_modules/.bin/flow"
   },
   "dependencies": {
     "firebase": "^3.9.0",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
+    "flow-bin": "0.37.0",
     "jest": "19.0.2",
     "react-test-renderer": "16.0.0-alpha.6"
   },

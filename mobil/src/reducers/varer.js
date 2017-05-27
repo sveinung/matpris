@@ -1,14 +1,25 @@
+//  @flow
+
 import {
   ENDRE_TEKST,
   LEGG_TIL_VARE,
 } from '../actions/varer';
+
+export type Vare = {
+  tekst: string,
+}
+
+type State = {
+  tekst: string,
+  varer: Array<Vare>,
+}
 
 const INITIAL_STATE = {
   tekst: '',
   varer: [],
 };
 
-export default varer = (state = INITIAL_STATE, action) => {
+export default function varer(state: State = INITIAL_STATE, action: Action) {
   switch (action.type) {
     case ENDRE_TEKST:
       return {

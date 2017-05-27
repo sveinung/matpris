@@ -15,6 +15,12 @@ import { endreTekst, leggTilVare } from '../actions/varer';
 import textInputStyles from './styles/textInput';
 
 class LeggTilButton extends Component {
+  props: {
+    tekst: string,
+    endreTekst: (string) => Action,
+    leggTilVare: (string) => Action,
+  };
+
   render() {
     return (
       <View>

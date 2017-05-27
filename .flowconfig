@@ -1,0 +1,10 @@
+[ignore]
+.*/mobil/*
+
+[include]
+
+[libs]
+
+[options]
+
+suppress_comment= \\(.\\|\n\\)*\\$IgnoreFlow
