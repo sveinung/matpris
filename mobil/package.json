@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "dev": "react-native run-ios",
     "test": "jest",
-    "prepublish": "cd ios; pod install"
+    "prepublish": "cd ios; pod install",
+    "clean": "rm -rf ios/build/"
   },
   "dependencies": {
     "firebase": "^3.9.0",
