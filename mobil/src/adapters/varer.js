@@ -1,6 +1,8 @@
+//  @flow
+
 import firebase from 'firebase';
 
-async function leggTilVare(varenamn) {
+function leggTilVare(varenamn: string): Promise<void> {
   const userId = firebase.auth().currentUser.uid;
 
   const vare = {
