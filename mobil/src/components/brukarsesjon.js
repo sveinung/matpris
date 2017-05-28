@@ -15,7 +15,7 @@ import { Gravatar } from 'react-native-gravatar';
 
 import { loggUt } from '../actions/innloggaBrukar';
 import type { State as InnloggaBrukarState } from '../reducers/innloggaBrukar';
-import { loggUtBrukar } from '../adapters/autentisering';
+import { loggUtBrukar } from '../services/autentisering';
 
 type Props = {
   epost: string,

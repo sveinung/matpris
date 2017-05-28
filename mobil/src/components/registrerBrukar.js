@@ -17,7 +17,7 @@ import {
   registreringsfeil,
 } from '../actions/registrertBrukar';
 import { innloggaSom } from '../actions/innloggaBrukar';
-import { registrerBrukar } from '../adapters/autentisering';
+import { registrerBrukar } from '../services/autentisering';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
 

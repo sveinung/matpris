@@ -24,7 +24,7 @@ import { innloggaSom } from '../actions/innloggaBrukar';
 import {
   loggInnBrukar,
   vedEndraAutentiseringsstatus,
-} from '../adapters/autentisering';
+} from '../services/autentisering';
 import { TOMATRAUD } from '../felles/fargar';
 import textInputStyles from './styles/textInput';
 

@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 
-import './src/adapters/firebase-init';
+import './src/services/firebase-init';
 import store from './src/store';
 import Router from './src/router';
 
