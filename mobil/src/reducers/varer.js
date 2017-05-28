@@ -1,12 +1,13 @@
 //  @flow
 
 import {
+  HENT_VARER,
   ENDRE_TEKST,
   LEGG_TIL_VARE,
 } from '../actions/varer';
 
 export type Vare = {
-  tekst: string,
+  varenamn: string,
 }
 
 type State = {
@@ -21,6 +22,11 @@ const INITIAL_STATE = {
 
 export default function varer(state: State = INITIAL_STATE, action: Action) {
   switch (action.type) {
+    case HENT_VARER:
+      return {
+        ...state,
+        varer: action.payload,
+      };
     case ENDRE_TEKST:
       return {
         ...state,
@@ -32,7 +38,7 @@ export default function varer(state: State = INITIAL_STATE, action: Action) {
         varer: [
           ...state.varer,
           {
-            tekst: action.payload
+            varenamn: action.payload
           }
         ]
       };

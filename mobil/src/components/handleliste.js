@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 
 import LeggTilButton from './leggtilbutton';
 import type { Vare } from '../reducers/varer';
+import { hentVarer } from '../actions/varer';
 
 const LIGHT_BLUE = '#dff1f9';
 
@@ -35,6 +36,10 @@ class Handleliste extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.hentVarer();
+  }
+
   componentWillReceiveProps(nextProps: Props) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -50,7 +55,7 @@ class Handleliste extends Component {
           enableEmptySections
           style={{backgroundColor: LIGHT_BLUE}}
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData.tekst}</Text>}/>
+          renderRow={(rowData) => <Text>{rowData.varenamn}</Text>}/>
       </View>
     )
   }
@@ -70,4 +75,8 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(Handleliste);
+const mapDispatchToProps = {
+  hentVarer,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Handleliste);
