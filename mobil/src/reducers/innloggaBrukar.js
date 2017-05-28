@@ -12,7 +12,6 @@ export type State = {
 const INITIAL_STATE = {
   epost: '',
   innlogga: false,
-  innlogga1: false,
 };
 
 export default function innloggaBrukar(state: State = INITIAL_STATE, action: Action) {
