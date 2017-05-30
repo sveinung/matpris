@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux'
 
 import LeggTilButton from './leggtilbutton';
+import HandlelisteItem from './handlelisteitem';
 import type { Vare } from '../reducers/varer';
 import { hentVarer } from '../actions/varer';
 
@@ -55,7 +56,7 @@ class Handleliste extends Component {
           enableEmptySections
           style={{backgroundColor: LIGHT_BLUE}}
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData.varenamn}</Text>}/>
+          renderRow={(rowData) => <HandlelisteItem vare={rowData} />}/>
       </View>
     )
   }
