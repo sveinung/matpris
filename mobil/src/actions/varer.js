@@ -5,6 +5,7 @@ import vareService from '../services/varer';
 export const HENT_VARER = 'HENT_VARER';
 export const ENDRE_TEKST = 'ENDRE_TEKST';
 export const LEGG_TIL_VARE = 'LEGG_TIL_VARE';
+export const FJERN_VARE = 'FJERN_VARE';
 
 export const endreTekst = (tekst: string) => {
   return {
@@ -32,4 +33,13 @@ export const leggTilVare = (varenamn: string) => (dispatch: Function) => {
         payload: varenamn,
       })
     );
+};
+
+export const fjernVare = (vareId: string) => (dispatch: Function) => {
+  return vareService.fjernVare(vareId)
+    .then(() => dispatch({
+      type: FJERN_VARE,
+      payload: vareId,
+    })
+  );
 };

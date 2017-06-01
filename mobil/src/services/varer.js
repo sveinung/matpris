@@ -7,7 +7,15 @@ function hentVarer(): Promise<void> {
   const userId = firebase.auth().currentUser.uid;
   return firebase.database().ref(`users/${userId}/handleliste`)
     .once('value')
-    .then((snapshot) => _.valuesIn(snapshot.val()));
+    .then((snapshot) => snapshot.toJSON())
+    .then((values) => {
+      return _.map(values, (value, key) => {
+        return {
+          id: key,
+          ...value,
+        };
+      });
+    });
 }
 
 function leggTilVare(varenamn: string): Promise<void> {
@@ -25,7 +33,15 @@ function leggTilVare(varenamn: string): Promise<void> {
   return firebase.database().ref().update(updates);
 }
 
+function fjernVare(vareId: string) {
+  const userId = firebase.auth().currentUser.uid;
+  return firebase.database()
+    .ref(`users/${userId}/handleliste/${vareId}`)
+    .remove();
+}
+
 export default {
   hentVarer,
   leggTilVare,
+  fjernVare,
 }

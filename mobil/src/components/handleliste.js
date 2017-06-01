@@ -16,8 +16,6 @@ import HandlelisteItem from './handlelisteitem';
 import type { Vare } from '../reducers/varer';
 import { hentVarer } from '../actions/varer';
 
-const LIGHT_BLUE = '#dff1f9';
-
 type Props = {
   dataSource: Object,
   varer: Array<Vare>,
@@ -54,7 +52,6 @@ class Handleliste extends Component {
         <LeggTilButton />
         <ListView
           enableEmptySections
-          style={{backgroundColor: LIGHT_BLUE}}
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <HandlelisteItem vare={rowData} />}/>
       </View>
@@ -65,7 +62,7 @@ class Handleliste extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 16,
     marginTop: 60,
   },
 });
