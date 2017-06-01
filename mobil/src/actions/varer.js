@@ -28,9 +28,9 @@ export const hentVarer = () => (dispatch: Function) => {
 
 export const leggTilVare = (varenamn: string) => (dispatch: Function) => {
   return vareService.leggTilVare(varenamn)
-    .then(() => dispatch({
+    .then((vare: Vare) => dispatch({
         type: LEGG_TIL_VARE,
-        payload: varenamn,
+        payload: vare,
       })
     );
 };

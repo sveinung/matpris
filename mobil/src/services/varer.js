@@ -3,6 +3,8 @@
 import firebase from 'firebase';
 import _ from 'lodash';
 
+import type { Vare } from '../reducers/varer';
+
 function hentVarer(): Promise<void> {
   const userId = firebase.auth().currentUser.uid;
   return firebase.database().ref(`users/${userId}/handleliste`)
@@ -18,7 +20,7 @@ function hentVarer(): Promise<void> {
     });
 }
 
-function leggTilVare(varenamn: string): Promise<void> {
+function leggTilVare(varenamn: string): Promise<Vare> {
   const userId = firebase.auth().currentUser.uid;
 
   const vare = {
@@ -30,7 +32,13 @@ function leggTilVare(varenamn: string): Promise<void> {
   const updates = {};
   updates[`users/${userId}/handleliste/${handlelisteKey}`] = vare;
 
-  return firebase.database().ref().update(updates);
+  return firebase.database().ref().update(updates)
+    .then(() => {
+      return {
+        id: handlelisteKey,
+        varenamn,
+      };
+    });
 }
 
 function fjernVare(vareId: string) {
